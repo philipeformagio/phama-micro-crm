@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using PhamaMicroCrm.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PhamaMicroCrm.Data.Context
 {
-    public class PhamaMicroCrmContext
+    public class PhamaMicroCrmContext : DbContext
     {
+        public DbSet<Company> Companies { get; set; }
     }
 }
