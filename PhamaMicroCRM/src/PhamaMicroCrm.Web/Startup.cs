@@ -34,7 +34,7 @@ namespace PhamaMicroCrm.Web
             services.AddIdentityConfiguration(this.Configuration);
 
             services.AddDbContext<PhamaMicroCrmContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection2")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAutoMapper(typeof(Startup));
 
