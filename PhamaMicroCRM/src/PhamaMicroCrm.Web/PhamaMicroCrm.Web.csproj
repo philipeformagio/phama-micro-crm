@@ -8,6 +8,11 @@
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200609170743_initial-creat-identity.cs" />
+    <Compile Remove="Data\Migrations\20200609170743_initial-creat-identity.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
