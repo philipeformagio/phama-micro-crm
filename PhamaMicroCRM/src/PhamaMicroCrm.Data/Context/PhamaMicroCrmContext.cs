@@ -20,7 +20,7 @@ namespace PhamaMicroCrm.Data.Context
                 property.Relational().ColumnType = "varchar(100)";
             }
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DbContextOptions).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(PhamaMicroCrmContext).Assembly);
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {

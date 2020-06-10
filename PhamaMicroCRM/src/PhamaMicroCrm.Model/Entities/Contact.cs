@@ -9,6 +9,7 @@ namespace PhamaMicroCrm.Model.Entities
         public string Email { get; set; }
         public string Phone_1 { get; set; }
         public string Phone_2 { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public CompanyUnit CompanyUnit { get; set; }
     }

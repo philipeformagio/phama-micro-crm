@@ -18,10 +18,6 @@ namespace PhamaMicroCrm.Data.Mappings
                    .IsRequired()
                    .HasColumnType("varchar(100)");
 
-            builder.Property(c => c.Active)
-                   .IsRequired()
-                   .HasColumnType("bit");
-
             // 1 : N => Company : CompanyUnit
             builder.HasMany(c => c.CompanyUnits)
                    .WithOne(cu => cu.Company)

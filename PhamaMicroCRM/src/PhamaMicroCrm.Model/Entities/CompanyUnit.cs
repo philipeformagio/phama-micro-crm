@@ -11,6 +11,7 @@ namespace PhamaMicroCrm.Model.Entities
         public string Phone_3 { get; set; }
         public Address Address { get; set; }
         public bool Active { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public Company Company { get; set; }
 
