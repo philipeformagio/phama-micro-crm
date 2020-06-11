@@ -27,4 +27,9 @@
     <ProjectReference Include="..\PhamaMicroCrm.Data\PhamaMicroCrm.Data.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Views\Companies\" />
+  </ItemGroup>
+
 </Project>
