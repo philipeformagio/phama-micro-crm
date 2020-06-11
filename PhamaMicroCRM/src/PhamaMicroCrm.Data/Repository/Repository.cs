@@ -16,6 +16,12 @@ namespace PhamaMicroCrm.Data.Repository
         protected readonly PhamaMicroCrmContext Db;
         protected readonly DbSet<TEntity> DbSet;
 
+        public Repository(PhamaMicroCrmContext db)
+        {
+            this.Db = db;
+            this.DbSet = db.Set<TEntity>();
+        }
+
         public async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> predicate)
         {
             return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
