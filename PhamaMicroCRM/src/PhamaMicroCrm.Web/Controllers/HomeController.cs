@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PhamaMicroCrm.Web.Models;
+using PhamaMicroCrm.Web.ViewModels;
 
 namespace PhamaMicroCrm.Web.Controllers
 {

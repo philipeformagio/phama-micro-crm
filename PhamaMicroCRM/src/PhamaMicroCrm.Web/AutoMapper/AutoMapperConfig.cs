@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using PhamaMicroCrm.Model.Entities;
+using PhamaMicroCrm.Web.ViewModels;
 
 namespace PhamaMicroCrm.Web.AutoMapper
 {
@@ -6,7 +8,7 @@ namespace PhamaMicroCrm.Web.AutoMapper
     {
         public AutoMapperConfig()
         {
-            
+            CreateMap<Company, CompanyViewModel>().ReverseMap();
         }
     }
 }

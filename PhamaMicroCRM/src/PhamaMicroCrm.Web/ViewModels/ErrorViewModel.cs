@@ -1,4 +1,4 @@
-namespace PhamaMicroCrm.Web.Models
+namespace PhamaMicroCrm.Web.ViewModels
 {
     public class ErrorViewModel
     {
