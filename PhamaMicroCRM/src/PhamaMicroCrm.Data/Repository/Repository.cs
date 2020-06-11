@@ -4,50 +4,54 @@ using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Model.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PhamaMicroCrm.Data.Repository
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, new()
     {
         protected readonly PhamaMicroCrmContext Db;
         protected readonly DbSet<TEntity> DbSet;
 
-        public Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
         }
 
-        public Task<List<TEntity>> GetAll()
+        public virtual async Task<List<TEntity>> GetAll()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
-        public Task<TEntity> GetById(Guid id)
+        public virtual async Task<TEntity> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return await DbSet.FindAsync(id);
         }
 
-        public Task Add(TEntity entity)
+        public virtual async Task Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbSet.Add(entity);
+            await SaveChanges();
         }
 
-        public Task Updade(TEntity entity)
+        public virtual async Task Updade(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbSet.Update(entity);
+            await SaveChanges();
         }
 
-        public Task Remove(Guid id)
+        public virtual async Task Remove(Guid id)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(new TEntity { Id = id });
+            await SaveChanges();
         }
 
-        public Task<int> SaveChanges()
+        public async Task<int> SaveChanges()
         {
-            throw new NotImplementedException();
+            return await Db.SaveChangesAsync();
         }
 
 
