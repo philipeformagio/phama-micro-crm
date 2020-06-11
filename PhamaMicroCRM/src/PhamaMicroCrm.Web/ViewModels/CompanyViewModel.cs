@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -21,5 +22,7 @@ namespace PhamaMicroCrm.Web.ViewModels
 
         [DisplayName("Ativo?")]
         public bool Active { get; set; }
+
+        public IEnumerable<CompanyUnitViewModel> CompanyUnits { get; set; }
     }
 }

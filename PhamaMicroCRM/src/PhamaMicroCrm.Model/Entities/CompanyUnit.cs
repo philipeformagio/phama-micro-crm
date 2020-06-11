@@ -6,6 +6,7 @@ namespace PhamaMicroCrm.Model.Entities
     public class CompanyUnit : Entity
     {
         public Guid CompanyId { get; set; }
+        public string Name { get; set; }
         public string Phone_1 { get; set; }
         public string Phone_2 { get; set; }
         public string Phone_3 { get; set; }

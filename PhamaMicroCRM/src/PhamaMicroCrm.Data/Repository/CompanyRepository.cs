@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PhamaMicroCrm.Data.Context;
 using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Model.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PhamaMicroCrm.Data.Repository
 {
     public class CompanyRepository : Repository<Company>, ICompanyRepository
     {
+        public CompanyRepository(PhamaMicroCrmContext context) : base(context) { }
+
         public async Task<Company> GetCompanyWithUnits(Guid companyId)
         {
             return await Db.Companies.AsNoTracking()
