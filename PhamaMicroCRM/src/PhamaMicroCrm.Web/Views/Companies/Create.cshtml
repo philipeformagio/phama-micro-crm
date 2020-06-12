@@ -1,12 +1,11 @@
 ﻿@model PhamaMicroCrm.Web.ViewModels.CompanyViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Nova Empresa";
 }
 
-<h1>Create</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>CompanyViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-12">
@@ -37,7 +36,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {
