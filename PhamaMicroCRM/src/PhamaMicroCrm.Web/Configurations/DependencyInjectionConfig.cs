@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PhamaMicroCrm.Business.Interfaces;
+using PhamaMicroCrm.Business.Notifications;
+using PhamaMicroCrm.Business.Services;
 using PhamaMicroCrm.Data.Context;
 using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Data.Repository;
@@ -16,7 +19,8 @@ namespace PhamaMicroCrm.Web.Configurations
 
             //services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAttributeAdapterProvider>();
 
-            //services.AddScoped<INotificador, Notificador>();
+            services.AddScoped<INotifier, Notifier>();
+            services.AddScoped<ICompanyService, CompanyService>();
 
             return services;
         }

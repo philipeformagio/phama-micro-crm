@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhamaMicroCrm.Data\PhamaMicroCrm.Data.csproj" />
     <ProjectReference Include="..\PhamaMicroCrm.Model\PhamaMicroCrm.Model.csproj" />
   </ItemGroup>
 

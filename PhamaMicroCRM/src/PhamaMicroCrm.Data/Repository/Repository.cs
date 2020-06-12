@@ -62,7 +62,7 @@ namespace PhamaMicroCrm.Data.Repository
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Db?.Dispose();
         }
     }
 }

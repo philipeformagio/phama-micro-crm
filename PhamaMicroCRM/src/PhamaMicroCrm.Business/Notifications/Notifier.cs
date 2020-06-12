@@ -8,6 +8,11 @@ namespace PhamaMicroCrm.Business.Notifications
     {
         private List<Notification> _notifications;
 
+        public Notifier()
+        {
+            _notifications = new List<Notification>();
+        }
+
         public List<Notification> GetNotifications()
         {
             return _notifications;

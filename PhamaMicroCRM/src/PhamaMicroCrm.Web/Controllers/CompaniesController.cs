@@ -39,7 +39,7 @@ namespace PhamaMicroCrm.Web.Controllers
             return View();
         }
 
-        [Route("novo-fornecedor")]
+        [Route("nova-empresa")]
         [HttpPost]
         public async Task<IActionResult> Create(CompanyViewModel companyViewModel)
         {
