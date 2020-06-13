@@ -23,7 +23,6 @@ namespace PhamaMicroCrm.Web.Controllers
             _companyRepository = companyRepository;
             _companyService = companyService;
             _mapper = mapper;
-
         }
 
         public async Task<IActionResult> Index()
@@ -51,7 +50,7 @@ namespace PhamaMicroCrm.Web.Controllers
 
             if (!IsValidOperation()) return View(companyViewModel);
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         [Route("nova-unidade")]
@@ -60,6 +59,45 @@ namespace PhamaMicroCrm.Web.Controllers
             var companyUnitViewModel = await this.GetCompanies(new CompanyUnitViewModel());
 
             return View(companyUnitViewModel);
+        }
+
+        [Route("detalhes-empresa/{id:guid}")]
+        public async Task<IActionResult> Details(Guid? id)
+        {
+            if (id == null) return NotFound();
+
+            var companyViewModel = await this.GetCompanyWithUnits(id.Value);
+            if (companyViewModel == null) return NotFound();
+
+            return View(companyViewModel);
+        }
+
+        [Route("editar-empresa/{id:guid}")]
+        public async Task<IActionResult> Edit(Guid? id)
+        {
+            if (id == null) return NotFound();
+
+            var companyViewModel = await this.GetCompanyWithUnits(id.Value);
+
+            if (companyViewModel == null) return NotFound();
+
+            return View(companyViewModel);
+        }
+
+        [HttpPost]
+        [Route("editar-empresa/{id:guid}")]
+        public async Task<IActionResult> Edit(Guid id, CompanyViewModel companyViewModel)
+        {
+            if (id != companyViewModel.Id) return NotFound();
+
+            if (!ModelState.IsValid) return View(companyViewModel);
+
+            var company = _mapper.Map<Company>(companyViewModel);
+            await _companyRepository.Updade(company);
+
+            if (!IsValidOperation()) return View(companyViewModel);
+
+            return RedirectToAction(nameof(Index));
         }
 
         //[HttpPut]
@@ -71,16 +109,7 @@ namespace PhamaMicroCrm.Web.Controllers
         //    return View();
         //}
 
-        [Route("dados-empresa/{id:guid}")]
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null) return NotFound();
 
-            var companyViewModel = await this.GetCompanyWithUnits(id.Value);
-            if (companyViewModel == null) return NotFound();
-
-            return View(companyViewModel);
-        }
 
 
         #region .: Private Methods :.
