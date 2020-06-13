@@ -4,6 +4,7 @@ using PhamaMicroCrm.Business.Interfaces;
 using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Model.Entities;
 using PhamaMicroCrm.Web.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -52,5 +53,48 @@ namespace PhamaMicroCrm.Web.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [Route("nova-unidade")]
+        public async Task<IActionResult> CreateUnits()
+        {
+            var companyUnitViewModel = await this.GetCompanies(new CompanyUnitViewModel());
+
+            return View(companyUnitViewModel);
+        }
+
+        //[HttpPut]
+        //[Route("nova-unidade")]
+        //public async Task<IActionResult> CreateUnits(CompanyViewModel companyViewModel)
+        //{
+        //    if (!ModelState.IsValid) return View(companyViewModel);
+
+        //    return View();
+        //}
+
+        [Route("dados-empresa/{id:guid}")]
+        public async Task<IActionResult> Details(Guid? id)
+        {
+            if (id == null) return NotFound();
+
+            var companyViewModel = await this.GetCompanyWithUnits(id.Value);
+            if (companyViewModel == null) return NotFound();
+
+            return View(companyViewModel);
+        }
+
+
+        #region .: Private Methods :.
+        private async Task<CompanyViewModel> GetCompanyWithUnits(Guid id)
+        {
+            return _mapper.Map<CompanyViewModel>(await _companyRepository.GetCompanyWithUnits(id));
+        }
+
+        private async Task<CompanyUnitViewModel> GetCompanies(CompanyUnitViewModel companyUnitViewModel)
+        {
+            companyUnitViewModel.Companies = _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
+
+            return companyUnitViewModel;
+        }
+        #endregion
     }
 }
