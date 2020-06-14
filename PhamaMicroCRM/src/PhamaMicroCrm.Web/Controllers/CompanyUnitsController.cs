@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PhamaMicroCrm.Business.Interfaces;
+using PhamaMicroCrm.Web.ViewModels;
 
 namespace PhamaMicroCrm.Web.Controllers
 {
@@ -12,6 +13,15 @@ namespace PhamaMicroCrm.Web.Controllers
         public CompanyUnitsController(INotifier notifier) : base(notifier)
         {
 
+        }
+
+        [HttpPut]
+        [Route("nova-unidade")]
+        public async Task<IActionResult> CreateUnits(CompanyViewModel companyViewModel)
+        {
+            if (!ModelState.IsValid) return View(companyViewModel);
+
+            return View();
         }
     }
 }

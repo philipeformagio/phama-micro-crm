@@ -100,17 +100,6 @@ namespace PhamaMicroCrm.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //[HttpPut]
-        //[Route("nova-unidade")]
-        //public async Task<IActionResult> CreateUnits(CompanyViewModel companyViewModel)
-        //{
-        //    if (!ModelState.IsValid) return View(companyViewModel);
-
-        //    return View();
-        //}
-
-
-
 
         #region .: Private Methods :.
         private async Task<CompanyViewModel> GetCompanyWithUnits(Guid id)
