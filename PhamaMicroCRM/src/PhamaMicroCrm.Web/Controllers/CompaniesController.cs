@@ -53,14 +53,6 @@ namespace PhamaMicroCrm.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Route("nova-unidade")]
-        public async Task<IActionResult> CreateUnits()
-        {
-            var companyUnitViewModel = await this.GetCompanies(new CompanyUnitViewModel());
-
-            return View(companyUnitViewModel);
-        }
-
         [Route("detalhes-empresa/{id:guid}")]
         public async Task<IActionResult> Details(Guid? id)
         {
@@ -93,7 +85,8 @@ namespace PhamaMicroCrm.Web.Controllers
             if (!ModelState.IsValid) return View(companyViewModel);
 
             var company = _mapper.Map<Company>(companyViewModel);
-            await _companyRepository.Updade(company);
+            //TODO: use _companyService.Update()
+            await _companyRepository.Update(company);
 
             if (!IsValidOperation()) return View(companyViewModel);
 

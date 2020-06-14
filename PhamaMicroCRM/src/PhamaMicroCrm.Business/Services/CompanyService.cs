@@ -18,6 +18,7 @@ namespace PhamaMicroCrm.Business.Services
             _companyRepository = companyRepository;
         }
 
+
         public async Task Add(Company company)
         {
             if (!ExecuteValidation(new CompanyValidation(), company)) return;
@@ -39,6 +40,11 @@ namespace PhamaMicroCrm.Business.Services
         public Task Update(Company company)
         {
             throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            _companyRepository?.Dispose();
         }
     }
 }

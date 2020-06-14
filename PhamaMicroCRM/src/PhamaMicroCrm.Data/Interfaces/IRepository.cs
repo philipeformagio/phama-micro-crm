@@ -14,7 +14,7 @@ namespace PhamaMicroCrm.Data.Interfaces
 
         Task<List<TEntity>> GetAll();
 
-        Task Updade(TEntity entity);
+        Task Update(TEntity entity);
 
         Task Remove(Guid id);
 

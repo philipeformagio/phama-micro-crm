@@ -21,6 +21,7 @@ namespace PhamaMicroCrm.Data.Repository
             this.DbSet = db.Set<TEntity>();
         }
 
+
         public async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> predicate)
         {
             return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
@@ -42,7 +43,7 @@ namespace PhamaMicroCrm.Data.Repository
             await SaveChanges();
         }
 
-        public virtual async Task Updade(TEntity entity)
+        public virtual async Task Update(TEntity entity)
         {
             DbSet.Update(entity);
             await SaveChanges();
