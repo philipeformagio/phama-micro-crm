@@ -32,15 +32,18 @@ namespace PhamaMicroCrm.Business.Services
             await _companyRepository.Add(company);
         }
 
+        public async Task Update(Company company)
+        {
+            if (!ExecuteValidation(new CompanyValidation(), company)) return;
+
+            await _companyRepository.Update(company);
+        }
+
         public Task Remove(Guid id)
         {
             throw new NotImplementedException();
         }
-
-        public Task Update(Company company)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void Dispose()
         {

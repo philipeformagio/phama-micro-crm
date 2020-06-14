@@ -14,6 +14,7 @@ namespace PhamaMicroCrm.Web.Configurations
         {
             services.AddScoped<PhamaMicroCrmContext>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<ICompanyUnitRepository, CompanyUnitRepository>();
             //services.AddScoped<IFornecedorRepository, FornecedorRepository>();
             //services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 
@@ -21,6 +22,7 @@ namespace PhamaMicroCrm.Web.Configurations
 
             services.AddScoped<INotifier, Notifier>();
             services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<ICompanyUnitService, CompanyUnitService>();
 
             return services;
         }

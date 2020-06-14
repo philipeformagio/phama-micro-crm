@@ -84,9 +84,8 @@ namespace PhamaMicroCrm.Web.Controllers
 
             if (!ModelState.IsValid) return View(companyViewModel);
 
-            var company = _mapper.Map<Company>(companyViewModel);
-            //TODO: use _companyService.Update()
-            await _companyRepository.Update(company);
+            var company = _mapper.Map<Company>(companyViewModel);            
+            await _companyService.Update(company);
 
             if (!IsValidOperation()) return View(companyViewModel);
 

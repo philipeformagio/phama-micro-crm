@@ -30,7 +30,7 @@ namespace PhamaMicroCrm.Web.Controllers
         }
 
         [Route("nova-unidade")]
-        public async Task<IActionResult> CreateUnits()
+        public async Task<IActionResult> Create()
         {
             var companyUnitViewModel = await this.GetCompanies(new CompanyUnitViewModel());
 
@@ -39,7 +39,7 @@ namespace PhamaMicroCrm.Web.Controllers
 
         [HttpPut]
         [Route("nova-unidade")]
-        public async Task<IActionResult> CreateUnits(CompanyUnitViewModel companyUnitViewModel)
+        public async Task<IActionResult> Create(CompanyUnitViewModel companyUnitViewModel)
         {
             if (!ModelState.IsValid) return View(companyUnitViewModel);
 
