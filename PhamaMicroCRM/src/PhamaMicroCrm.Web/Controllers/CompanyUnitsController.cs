@@ -34,10 +34,10 @@ namespace PhamaMicroCrm.Web.Controllers
         {
             var companyUnitViewModel = await this.GetCompanies(new CompanyUnitViewModel());
 
-            return View(companyUnitViewModel);
+            return View(new CompanyUnitViewModel());
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("nova-unidade")]
         public async Task<IActionResult> Create(CompanyUnitViewModel companyUnitViewModel)
         {

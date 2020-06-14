@@ -98,13 +98,6 @@ namespace PhamaMicroCrm.Web.Controllers
         {
             return _mapper.Map<CompanyViewModel>(await _companyRepository.GetCompanyWithUnits(id));
         }
-
-        private async Task<CompanyUnitViewModel> GetCompanies(CompanyUnitViewModel companyUnitViewModel)
-        {
-            companyUnitViewModel.Companies = _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
-
-            return companyUnitViewModel;
-        }
         #endregion
     }
 }

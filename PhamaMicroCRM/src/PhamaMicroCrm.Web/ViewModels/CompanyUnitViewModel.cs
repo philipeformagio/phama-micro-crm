@@ -28,10 +28,10 @@ namespace PhamaMicroCrm.Web.ViewModels
         [DisplayName("Telefone 3")]
         public string Phone_3 { get; set; }
 
-        public AddressViewModel Address { get; set; }
+        //public AddressViewModel Address { get; set; }
 
         [DisplayName("Ativo?")]
-        public bool Active { get; set; }        
+        public bool Active { get; set; }
 
         public CompanyViewModel Company { get; set; }
 
