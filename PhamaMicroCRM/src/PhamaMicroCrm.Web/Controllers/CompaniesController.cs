@@ -25,6 +25,7 @@ namespace PhamaMicroCrm.Web.Controllers
             _mapper = mapper;
         }
 
+        [Route("lista-de-empresas")]
         public async Task<IActionResult> Index()
         {
             var companies = await _companyRepository.GetAll();
