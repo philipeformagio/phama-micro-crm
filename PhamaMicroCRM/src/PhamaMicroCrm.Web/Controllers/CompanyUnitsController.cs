@@ -29,16 +29,16 @@ namespace PhamaMicroCrm.Web.Controllers
             _mapper = mapper;
         }
 
-        [Route("nova-unidade")]
+        [Route("unidades/nova-unidade")]
         public async Task<IActionResult> Create()
         {
             var companyUnitViewModel = await this.GetCompanies(new CompanyUnitViewModel());
 
-            return View(new CompanyUnitViewModel());
+            return View(companyUnitViewModel);
         }
 
         [HttpPost]
-        [Route("nova-unidade")]
+        [Route("unidades/nova-unidade")]
         public async Task<IActionResult> Create(CompanyUnitViewModel companyUnitViewModel)
         {
             if (!ModelState.IsValid) return View(companyUnitViewModel);

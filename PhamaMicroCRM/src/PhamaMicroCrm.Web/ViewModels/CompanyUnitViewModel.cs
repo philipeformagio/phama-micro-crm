@@ -28,7 +28,7 @@ namespace PhamaMicroCrm.Web.ViewModels
         [DisplayName("Telefone 3")]
         public string Phone_3 { get; set; }
 
-        //public AddressViewModel Address { get; set; }
+        public AddressViewModel Address { get; set; }
 
         [DisplayName("Ativo?")]
         public bool Active { get; set; }
@@ -37,6 +37,6 @@ namespace PhamaMicroCrm.Web.ViewModels
 
         public IEnumerable<CompanyViewModel> Companies { get; set; }
 
-        public IEnumerable<ContactViewModel> Contacts { get; set; }
+        //public IEnumerable<ContactViewModel> Contacts { get; set; }
     }
 }

@@ -58,7 +58,7 @@ namespace PhamaMicroCrm.Web.Controllers
         {
             if (id == null) return NotFound();
 
-            var companyViewModel = await this.GetCompanyWithUnits(id.Value);
+            var companyViewModel = await this.GetCompanyWithUnitsAndWithAddress(id.Value);
             if (companyViewModel == null) return NotFound();
 
             return View(companyViewModel);
@@ -94,6 +94,11 @@ namespace PhamaMicroCrm.Web.Controllers
 
 
         #region .: Private Methods :.
+        private async Task<CompanyViewModel> GetCompanyWithUnitsAndWithAddress(Guid id)
+        {
+            return _mapper.Map<CompanyViewModel>(await _companyRepository.GetCompanyWithUnitsAndWithAddress(id));
+        }
+
         private async Task<CompanyViewModel> GetCompanyWithUnits(Guid id)
         {
             return _mapper.Map<CompanyViewModel>(await _companyRepository.GetCompanyWithUnits(id));

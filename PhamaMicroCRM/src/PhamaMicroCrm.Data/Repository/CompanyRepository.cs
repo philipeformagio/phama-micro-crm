@@ -12,10 +12,11 @@ namespace PhamaMicroCrm.Data.Repository
     {
         public CompanyRepository(PhamaMicroCrmContext context) : base(context) { }
 
-        public async Task<Company> GetCompanyWithUnits(Guid companyId)
+        public async Task<Company> GetCompanyWithUnitsAndWithAddress(Guid companyId)
         {
             return await Db.Companies.AsNoTracking()
                            .Include(c => c.CompanyUnits)
+                           .ThenInclude(cu => cu.Address)
                            .FirstOrDefaultAsync(c => c.Id == companyId);
         }
 
@@ -24,6 +25,13 @@ namespace PhamaMicroCrm.Data.Repository
             return await Db.Companies.AsNoTracking()
                            .Include(c => c.CompanyUnits)
                            .ToListAsync();
+        }
+
+        public async Task<Company> GetCompanyWithUnits(Guid companyId)
+        {
+            return await Db.Companies.AsNoTracking()
+                           .Include(c => c.CompanyUnits)                           
+                           .FirstOrDefaultAsync(c => c.Id == companyId);
         }
     }
 }
