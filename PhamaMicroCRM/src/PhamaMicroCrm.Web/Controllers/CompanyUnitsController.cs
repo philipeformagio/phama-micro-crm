@@ -29,6 +29,15 @@ namespace PhamaMicroCrm.Web.Controllers
             _mapper = mapper;
         }
 
+        [Route("lista-de-unidades")]
+        public async Task<IActionResult> Index()
+        {
+            var companiesUnits = await _companyUnitRepository.GetAllCompanyUnitsWithCompanies();
+            var companyUnitsViewModel = _mapper.Map<IEnumerable<CompanyUnitViewModel>>(companiesUnits);
+
+            return View(companyUnitsViewModel);
+        }
+
         [Route("unidades/nova-unidade")]
         public async Task<IActionResult> Create()
         {
