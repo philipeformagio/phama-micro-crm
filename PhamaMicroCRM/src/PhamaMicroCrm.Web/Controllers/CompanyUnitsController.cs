@@ -50,6 +50,7 @@ namespace PhamaMicroCrm.Web.Controllers
         [Route("unidades/nova-unidade")]
         public async Task<IActionResult> Create(CompanyUnitViewModel companyUnitViewModel)
         {
+            companyUnitViewModel.Companies = await this.GetAllCompaniesList();
             if (!ModelState.IsValid) return View(companyUnitViewModel);
 
             var companyUnit = _mapper.Map<CompanyUnit>(companyUnitViewModel);
@@ -58,6 +59,17 @@ namespace PhamaMicroCrm.Web.Controllers
             if (!IsValidOperation()) return View(companyUnitViewModel);
 
             return RedirectToAction("Index", "Companies");
+        }
+
+        [Route("detalhes-unidade/{id:guid}")]
+        public async Task<IActionResult> Details(Guid? id)
+        {
+            if (id == null) return NotFound();
+
+            var companyViewModel = await _companyUnitRepository.GetCompanyUnitWithAddress(id.Value);
+            if (companyViewModel == null) return NotFound();
+
+            return View(companyViewModel);
         }
 
 
@@ -72,6 +84,11 @@ namespace PhamaMicroCrm.Web.Controllers
             companyUnitViewModel.Companies = _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
 
             return companyUnitViewModel;
+        }
+
+        private async Task<IEnumerable<CompanyViewModel>> GetAllCompaniesList()
+        {
+            return _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
         }
         #endregion
     }

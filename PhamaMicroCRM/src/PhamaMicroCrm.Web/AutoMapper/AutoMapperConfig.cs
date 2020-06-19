@@ -10,6 +10,8 @@ namespace PhamaMicroCrm.Web.AutoMapper
         {
             CreateMap<Company, CompanyViewModel>().ReverseMap();
             CreateMap<CompanyUnit, CompanyUnitViewModel>().ReverseMap();
+            CreateMap<Address, AddressViewModel>().ReverseMap();
+            CreateMap<Contact, ContactViewModel>().ReverseMap();
         }
     }
 }

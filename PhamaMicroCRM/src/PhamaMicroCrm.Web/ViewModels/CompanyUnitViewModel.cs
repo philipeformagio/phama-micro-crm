@@ -37,6 +37,6 @@ namespace PhamaMicroCrm.Web.ViewModels
 
         public IEnumerable<CompanyViewModel> Companies { get; set; }
 
-        //public IEnumerable<ContactViewModel> Contacts { get; set; }
+        public IEnumerable<ContactViewModel> Contacts { get; set; }
     }
 }
