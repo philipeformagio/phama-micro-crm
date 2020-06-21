@@ -23,7 +23,7 @@ namespace PhamaMicroCrm.Data.Repository
         {
             return await Db.CompanyUnits.AsNoTracking()
                            .Include(cu => cu.Address)
-                           .FirstOrDefaultAsync(cu => cu.CompanyId == companyUnitId);
+                           .FirstOrDefaultAsync(cu => cu.Id == companyUnitId);
         }
     }
 }

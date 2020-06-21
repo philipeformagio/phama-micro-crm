@@ -48,8 +48,7 @@ namespace PhamaMicroCrm.Business.Services
         public Task Remove(Guid id)
         {
             throw new NotImplementedException();
-        }
-        
+        }        
 
         public void Dispose()
         {

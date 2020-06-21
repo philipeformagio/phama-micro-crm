@@ -21,16 +21,11 @@ namespace PhamaMicroCrm.Business.Services
 
         public async Task Add(Contact contact)
         {
-            //if (!ExecuteValidation(new ContactValidation(), contact)) return;
+            if (!ExecuteValidation(new ContactValidation(), contact)) return;
 
-            //if(_contactRepository.Get(c => c.))
+            //if (_contactRepository.Get(c => c.))
 
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            //    throw new NotImplementedException();
         }
 
         public Task Remove(Guid id)
@@ -41,6 +36,11 @@ namespace PhamaMicroCrm.Business.Services
         public Task Update(Contact contact)
         {
             throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            _contactRepository?.Dispose();
         }
     }
 }

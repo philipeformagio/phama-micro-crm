@@ -36,9 +36,11 @@ namespace PhamaMicroCrm.Business.Services
             throw new NotImplementedException();
         }
 
-        public Task Update(CompanyUnit companyUnit)
+        public async Task Update(CompanyUnit companyUnit)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new CompanyUnitValidation(), companyUnit)) return;
+
+            await _companyUnitRepository.Update(companyUnit);
         }
 
         public void Dispose()

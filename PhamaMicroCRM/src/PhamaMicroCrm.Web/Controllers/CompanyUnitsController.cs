@@ -107,7 +107,7 @@ namespace PhamaMicroCrm.Web.Controllers
         #region .: Private Methods :.
         private async Task<CompanyUnitViewModel> GetCompanyUnitWithCompanies(Guid id)
         {
-            var companyUnit = await _companyUnitRepository.GetById(id);
+            var companyUnit = await _companyUnitRepository.GetCompanyUnitWithAddress(id);
             var companyUnitViewModel = _mapper.Map<CompanyUnitViewModel>(companyUnit);
             companyUnitViewModel.Companies = _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
 
