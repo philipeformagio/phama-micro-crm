@@ -72,11 +72,47 @@ namespace PhamaMicroCrm.Web.Controllers
             return View(companyViewModel);
         }
 
+        [Route("editar-unidade/{id:guid}")]
+        public async Task<IActionResult> Edit(Guid? id)
+        {
+            if (id == null) return NotFound();
+
+            var companyUnitViewModel = _mapper.Map<CompanyUnitViewModel>(await this.GetCompanyUnitWithCompanies(id.Value));
+            if (companyUnitViewModel == null) return NotFound();
+
+            return View(companyUnitViewModel);
+        }
+
+        [Route("editar-unidade/{id:guid}")]
+        [HttpPost]
+        public async Task<IActionResult> Edit(Guid id, CompanyUnitViewModel companyUnitViewModel)
+        {
+            if (id != companyUnitViewModel.Id) return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                companyUnitViewModel.Companies = _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
+                return View(companyUnitViewModel);
+            }
+
+            var companyUnit = _mapper.Map<CompanyUnit>(companyUnitViewModel);
+            await _companyUnitService.Update(companyUnit);
+
+            if (!IsValidOperation()) return View(companyUnitViewModel);
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
         #region .: Private Methods :.
-        private async Task<CompanyViewModel> GetCompanyWithUnits(Guid id)
+        private async Task<CompanyUnitViewModel> GetCompanyUnitWithCompanies(Guid id)
         {
-            return _mapper.Map<CompanyViewModel>(await _companyRepository.GetCompanyWithUnits(id));
+            var companyUnit = await _companyUnitRepository.GetById(id);
+            var companyUnitViewModel = _mapper.Map<CompanyUnitViewModel>(companyUnit);
+            companyUnitViewModel.Companies = _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
+
+            return companyUnitViewModel;
+
         }
 
         private async Task<CompanyUnitViewModel> GetCompanies(CompanyUnitViewModel companyUnitViewModel)
