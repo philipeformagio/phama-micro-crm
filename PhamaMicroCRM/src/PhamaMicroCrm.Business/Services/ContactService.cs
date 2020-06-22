@@ -26,6 +26,8 @@ namespace PhamaMicroCrm.Business.Services
             //if (_contactRepository.Get(c => c.))
 
             //    throw new NotImplementedException();
+
+            await _contactRepository.Add(contact);
         }
 
         public Task Remove(Guid id)

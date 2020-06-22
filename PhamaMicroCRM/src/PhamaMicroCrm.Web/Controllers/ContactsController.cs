@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace PhamaMicroCrm.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var contactsViewModel = _mapper.Map<IEnumerable<ContactViewModel>>(await _contactRepository.GetAll());
+            var contactsViewModel = _mapper.Map<IEnumerable<ContactViewModel>>(await _contactRepository.GetContactsWithCompany());
             return View(contactsViewModel);
         }
 
@@ -54,11 +55,34 @@ namespace PhamaMicroCrm.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Route("editar-contato/{id:guid}")]
+        public async Task<IActionResult> Edit(Guid? id)
+        {
+            if (id == null) return NotFound();
+
+            var contactViewModel = _mapper.Map<ContactViewModel>(await _contactRepository.GetContactWithCompanyUnit(id.Value));
+            if (contactViewModel == null) return NotFound();
+
+            return View(contactViewModel);
+        }
+
+        //[Route("editar-contato/{id:guid}")]
+        //[HttpPost]
+        //public async Task<IActionResult> Edit(ContactViewModel contactViewModel)
+        //{
+
+        //}
+
         #region .: Private Methods :.
         private async Task<ContactViewModel> PopulateContactViewModel(ContactViewModel contactViewModel)
         {
             contactViewModel.CompanyUnits = _mapper.Map<IEnumerable<CompanyUnitViewModel>>(await _companyUnitRepository.GetAll());
             return contactViewModel;
+        }
+
+        private async Task<ContactViewModel> GetContactWithCompanyUnit(Guid id)
+        {
+            return _mapper.Map<ContactViewModel>(await _contactRepository.GetContactWithCompanyUnit(id));
         }
         #endregion
     }

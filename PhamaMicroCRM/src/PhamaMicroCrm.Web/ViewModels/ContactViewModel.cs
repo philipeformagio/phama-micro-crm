@@ -7,7 +7,7 @@ namespace PhamaMicroCrm.Web.ViewModels
 {
     public class ContactViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [DisplayName("Unidade")]
         public Guid CompanyUnitId { get; set; }
