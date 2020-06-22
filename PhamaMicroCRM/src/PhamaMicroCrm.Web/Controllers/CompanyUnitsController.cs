@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PhamaMicroCrm.Business.Interfaces;
 using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Model.Entities;
 using PhamaMicroCrm.Web.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PhamaMicroCrm.Web.Controllers
 {

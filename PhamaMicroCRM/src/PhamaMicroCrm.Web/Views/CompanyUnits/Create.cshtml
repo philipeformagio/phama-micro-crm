@@ -1,5 +1,4 @@
 ﻿@model PhamaMicroCrm.Web.ViewModels.CompanyUnitViewModel
-
 @{
     ViewData["Title"] = "Nova Unidade";
 }
@@ -9,10 +8,11 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Create">
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <form asp-action="Create">            
 
             <vc:Summary></vc:Summary>
+
+            <input type="hidden" asp-for="Id" />
 
             <div class="form-group">
                 <label asp-for="CompanyId" class="control-label"></label>
@@ -42,9 +42,10 @@
                 </label>
             </div>
 
+            @*<input type="hidden" asp-for="Address.Id" />*@
+
             <h4>Endereço</h4>
             <hr />
-
             <partial name="_Address" />
 
             <div class="form-group">
