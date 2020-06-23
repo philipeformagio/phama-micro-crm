@@ -5,7 +5,7 @@
 
 <h1>@Model.Name</h1>
 
-<div>    
+<div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -20,12 +20,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Field)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Active)
-        </dd>
     </dl>
 </div>
 <br />
@@ -35,18 +29,45 @@
     <a class="btn btn-info" asp-action="Index">Voltar</a>
 </div>
 
+<br />
+<hr />
 <h4>Unidades</h4>
 
 <div>
-    @foreach (var units in Model.CompanyUnits)
-    {
-        <div class="card" style="width: 18rem;">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Nome Unidade
+                </th>
+                <th>
+                    Telefone 1
+                </th>
+                <th>
+                    Telefone 2
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var units in Model.CompanyUnits)
+            {
+                <tr>
+                    <td>@units.Name</td>
+                    <td>@units.Phone_1</td>
+                    <td>@units.Phone_2</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @*<div class="card" style="width: 18rem;">
             <div class="card-header">
                 @units.Name
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Telefone 1: @units.Phone_1</li>
-                <li class="list-group-item">Telefone 2: @units.Phone_2</li>                
+                <li class="list-group-item">Telefone 2: @units.Phone_2</li>
                 <li class="list-group-item">
                     Endereço:
                     @if (units.Address != null)
@@ -57,11 +78,5 @@
                     }
                 </li>
             </ul>
-        </div>
-    }
-</div>
-
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+        </div>*@
 </div>

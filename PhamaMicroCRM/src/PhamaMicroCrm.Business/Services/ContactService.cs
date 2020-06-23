@@ -35,9 +35,11 @@ namespace PhamaMicroCrm.Business.Services
             throw new NotImplementedException();
         }
 
-        public Task Update(Contact contact)
+        public async Task Update(Contact contact)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new ContactValidation(), contact)) return;
+
+            await _contactRepository.Update(contact);
         }
 
         public void Dispose()

@@ -60,18 +60,31 @@ namespace PhamaMicroCrm.Web.Controllers
         {
             if (id == null) return NotFound();
 
-            var contactViewModel = _mapper.Map<ContactViewModel>(await _contactRepository.GetContactWithCompanyUnit(id.Value));
+            var contactViewModel = _mapper.Map<ContactViewModel>(await this.GetContactWithCompanyUnit(id.Value));
             if (contactViewModel == null) return NotFound();
 
             return View(contactViewModel);
         }
 
-        //[Route("editar-contato/{id:guid}")]
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(ContactViewModel contactViewModel)
-        //{
+        [Route("editar-contato/{id:guid}")]
+        [HttpPost]
+        public async Task<IActionResult> Edit(Guid id, ContactViewModel contactViewModel)
+        {
+            if (id != contactViewModel.Id) return NotFound();
 
-        //}
+            if(!ModelState.IsValid)
+            {
+                contactViewModel.CompanyUnits = _mapper.Map<IEnumerable<CompanyUnitViewModel>>(_companyUnitRepository.GetAll());
+                return View(contactViewModel);
+            }
+
+            var contact = _mapper.Map<Contact>(contactViewModel);
+            await _contactService.Update(contact);
+
+            if (!IsValidOperation()) return View(contactViewModel);
+
+            return RedirectToAction(nameof(Index));
+        }
 
         #region .: Private Methods :.
         private async Task<ContactViewModel> PopulateContactViewModel(ContactViewModel contactViewModel)
@@ -82,7 +95,9 @@ namespace PhamaMicroCrm.Web.Controllers
 
         private async Task<ContactViewModel> GetContactWithCompanyUnit(Guid id)
         {
-            return _mapper.Map<ContactViewModel>(await _contactRepository.GetContactWithCompanyUnit(id));
+            var contactViewModel = _mapper.Map<ContactViewModel>(await _contactRepository.GetContactWithCompanyUnit(id));
+            contactViewModel.CompanyUnits = _mapper.Map<IEnumerable<CompanyUnitViewModel>>(await _companyUnitRepository.GetAll());
+            return contactViewModel;
         }
         #endregion
     }
