@@ -57,7 +57,7 @@ namespace PhamaMicroCrm.Web.Controllers
 
             if (!IsValidOperation()) return View(companyUnitViewModel);
 
-            return RedirectToAction("Index", "Companies");
+            return RedirectToAction(nameof(Index));
         }
 
         [Route("detalhes-unidade/{id:guid}")]
