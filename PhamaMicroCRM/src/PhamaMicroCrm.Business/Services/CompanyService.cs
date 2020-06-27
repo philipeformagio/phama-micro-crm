@@ -36,11 +36,11 @@ namespace PhamaMicroCrm.Business.Services
         {
             if (!ExecuteValidation(new CompanyValidation(), company)) return;
 
-            if (_companyRepository.Get(c => c.Name == company.Name).Result.Any())
-            {
-                Notify("Já existe uma empresa cadastrada com esse nome.");
-                return;
-            }
+            //if (_companyRepository.Get(c => c.Name == company.Name).Result.Any())
+            //{
+            //    Notify("Já existe uma empresa cadastrada com esse nome.");
+            //    return;
+            //}
 
             await _companyRepository.Update(company);
         }

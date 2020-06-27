@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId1')]/resourceGroups/[parameters('resourceGroup1')]/providers/Microsoft.Sql/servers/phamacrmdb/databases/PhamaMicroCrm.Web_db",
+      "type": "mssql.azure",
+      "connectionId": "DefaultConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
