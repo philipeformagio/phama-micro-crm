@@ -11,7 +11,8 @@
     <a class="btn btn-info" asp-controller="CompanyUnits" asp-action="Create">Nova Unidade</a>
     <a class="btn btn-info" asp-controller="Contacts" asp-action="Create">Novo Contato</a>
 </p>
-<table class="table table-hover">
+
+@*<table class="table table-hover">
     <thead class="thead-dark">
         <tr>
             <th>
@@ -41,4 +42,48 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@
+
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-9">
+
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Field)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Field)
+                            </td>
+                            <td class="text-right">
+                                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><spam class="fa fa-search fa-lg"></spam></a>
+                                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam></a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
