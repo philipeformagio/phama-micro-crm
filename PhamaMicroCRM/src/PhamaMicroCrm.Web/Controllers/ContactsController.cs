@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PhamaMicroCrm.Business.Interfaces;
 using PhamaMicroCrm.Data.Interfaces;
@@ -10,6 +11,7 @@ using PhamaMicroCrm.Web.ViewModels;
 
 namespace PhamaMicroCrm.Web.Controllers
 {
+    [Authorize]
     public class ContactsController : BaseController
     {
         private readonly IMapper _mapper;

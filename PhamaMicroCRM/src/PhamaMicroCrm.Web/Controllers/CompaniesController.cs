@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PhamaMicroCrm.Business.Interfaces;
 using PhamaMicroCrm.Data.Interfaces;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace PhamaMicroCrm.Web.Controllers
 {
+    [Authorize]
     public class CompaniesController : BaseController
     {
         private readonly ICompanyRepository _companyRepository;
