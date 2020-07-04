@@ -28,12 +28,9 @@ namespace PhamaMicroCrm.Web.Controllers
         }
 
         [Route("lista-de-empresas")]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var companies = await _companyRepository.GetAll();
-            var companyViewModel = _mapper.Map<IEnumerable<CompanyViewModel>>(companies);
-
-            return View(companyViewModel);
+            return View();
         }
 
         [Route("nova-empresa")]
@@ -94,6 +91,41 @@ namespace PhamaMicroCrm.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        #region .: API Calls :.
+
+        public async Task<IActionResult> GetAll()
+        {
+            return Json(new { data = await _companyRepository.GetAll() });
+        }
+
+        [HttpDelete]
+        [Route("deletar-empresa/{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _companyService.Remove(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            //if (bookFromDb == null)
+            //{
+            //    return Json(new { success = false, message = "Error while deleting" });
+            //}
+
+            //_db.Books.Remove(bookFromDb);
+            //await _db.SaveChangesAsync();
+
+            return Json(new { success = true, message = "Delete successful" });
+        }
+
+        #endregion
 
 
         #region .: Private Methods :.

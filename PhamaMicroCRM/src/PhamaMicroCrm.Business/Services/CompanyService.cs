@@ -45,9 +45,9 @@ namespace PhamaMicroCrm.Business.Services
             await _companyRepository.Update(company);
         }
 
-        public Task Remove(Guid id)
+        public async Task Remove(Guid id)
         {
-            throw new NotImplementedException();
+            await _companyRepository.Remove(id);
         }        
 
         public void Dispose()
