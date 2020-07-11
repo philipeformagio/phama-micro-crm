@@ -20,6 +20,9 @@ namespace PhamaMicroCrm.Web.ViewModels
         [DisplayName("Campo de atuação")]
         public string Field { get; set; }
 
+        [DisplayName("Telefone")]
+        public string Phone { get; set; }
+
         [DisplayName("Ativo?")]
         public bool Active { get; set; }
 

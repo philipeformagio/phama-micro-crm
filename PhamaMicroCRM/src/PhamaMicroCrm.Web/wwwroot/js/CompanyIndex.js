@@ -20,23 +20,31 @@ function loadDataTable() {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                                <a href="/detalhes-empresa/${data}" class="btn btn-success text-white" style="cursor:pointer; width:87px;">
-                                    Visualizar
+                                <a href="/detalhes-empresa/${data}" class="btn btn-info text-white" style="cursor:pointer;">
+                                    <spam class="fa fa-search"></spam>
                                 </a>
                                 &nbsp;
-                                <a href="/editar-empresa/${data}" class="btn btn-success text-white" style="cursor:pointer; width:70px;">
-                                    Editar
+                                <a href="/editar-empresa/${data}" class="btn btn-warning" style="cursor:pointer;">
+                                    <spam class="fa fa-pencil-alt"></spam>
                                 </a>
                                 &nbsp;
-                                <a class="btn btn-danger text-white" style="cursor:pointer; width:75px;" onclick="Delete('/deletar-empresa/${data}')">
-                                    Deletar
+                                <a class="btn btn-danger" style="cursor:pointer;" onclick="Delete('/deletar-empresa/${data}')">
+                                    <spam class="fa fa-trash"></spam>
                                 </a>
                             <div>`;
                 }, "width": "40%"
             }
         ],
         "language": {
-            "emptyTable": "no data found"
+            "decimal": ",",
+            "emptyTable": "Nenhum dado encontrado",
+            "search": "Pesquisar:",
+            "paginate": {
+                "first": "Primeiro",
+                "previous": "Anterior",
+                "next": "Próximo",
+                "last": "Ultimo"
+            },
         },
         "width": "100%"
     });
