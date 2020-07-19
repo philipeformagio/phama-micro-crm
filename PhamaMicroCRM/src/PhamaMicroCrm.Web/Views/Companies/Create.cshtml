@@ -10,7 +10,7 @@
 <br />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Create">
+        <form id="createCompanyForm" asp-action="Create">
             <vc:Summary></vc:Summary>
 
             <div class="form-group">
@@ -55,5 +55,10 @@
                     element.mask("(99) 9999-9999?9");
                 }
             });
+
+        $('#createCompanyForm').submit(function () {
+            $("#Phone").val() = $("#Phone").val().replace(" ", "").replace("(", "").replace(")", "").replace("-", "");
+            return true; // return false to cancel form action
+        });
     </script>
 }
