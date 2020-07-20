@@ -11,7 +11,6 @@ namespace PhamaMicroCrm.Web.TagHelpers
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "text";
-
             var content = await output.GetChildContentAsync();
 
             System.Text.StringBuilder builder = new System.Text.StringBuilder();
