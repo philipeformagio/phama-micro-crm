@@ -30,6 +30,7 @@ namespace PhamaMicroCrm.Web.Controllers
             _mapper = mapper;
         }
 
+        [Route("lista-de-contatos")]
         public async Task<IActionResult> Index()
         {
             var contactsViewModel = _mapper.Map<IEnumerable<ContactViewModel>>(await _contactRepository.GetContactsWithCompany());

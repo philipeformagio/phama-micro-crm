@@ -1,10 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    .pointer {
+        cursor: pointer;
+    }
+</style>
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-4" >
+        <div id="companiesDiv" class="col-4 pointer">
             <div class="card border-primary mb-3" style="max-width: 18rem; margin: 20px;">
                 <center>
                     <div class="card-header">Empresas</div>
@@ -16,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4" >
+        <div id="unitsDiv" class="col-4 pointer">
             <div class="card border-primary mb-3" style="max-width: 18rem; margin: 20px;">
                 <center>
                     <div class="card-header">Unidades</div>
@@ -28,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4" >
+        <div id="contactsDiv" class="col-4 pointer">
             <div class="card border-primary mb-3" style="max-width: 18rem; margin: 20px;">
                 <center>
                     <div class="card-header">Contatos</div>
@@ -42,3 +47,23 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#companiesDiv").on("click", function () {
+                document.location.href = "lista-de-empresas";
+            });
+
+            $("#unitsDiv").on("click", function () {
+                document.location.href = "lista-de-unidades";
+            });
+
+            $("#contactsDiv").on("click", function () {
+                document.location.href = "lista-de-contatos";
+            });
+
+        });
+    </script>
+}
