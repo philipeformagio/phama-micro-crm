@@ -5,7 +5,7 @@ using PhamaMicroCrm.Web.ViewModels;
 
 namespace PhamaMicroCrm.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "User")]
     public class HomeController : Controller
     {
         public IActionResult Index()

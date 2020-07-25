@@ -12,6 +12,7 @@ using PhamaMicroCrm.Web.ViewModels;
 namespace PhamaMicroCrm.Web.Controllers
 {
     [Authorize]
+    [Authorize(Roles = "User")]
     public class ContactsController : BaseController
     {
         private readonly IMapper _mapper;

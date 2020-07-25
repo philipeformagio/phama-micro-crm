@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace PhamaMicroCrm.Web.Controllers
 {
     [Authorize]
+    [Authorize(Roles = "User")]
     public class CompanyUnitsController : BaseController
     {
         private readonly ICompanyRepository _companyRepository;
