@@ -13,6 +13,12 @@ namespace PhamaMicroCrm.Web.TagHelpers
             output.TagName = "text";
             var content = await output.GetChildContentAsync();
 
+            if (content.GetContent() == "")
+            {
+                output.Content.SetContent("");
+                return;
+            }
+
             System.Text.StringBuilder builder = new System.Text.StringBuilder();
 
             if (content.GetContent().Count() == 8 || content.GetContent().Count() == 9)
