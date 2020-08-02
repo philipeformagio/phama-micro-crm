@@ -9,6 +9,7 @@ namespace PhamaMicroCrm.Web.Controllers
 {
     public class NotesController : Controller
     {
+        [Route("anotacoes")]
         public IActionResult Index()
         {
             return View();

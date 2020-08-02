@@ -45,6 +45,18 @@
                 </div>
             </div>
         </div>
+        <div id="notesDiv" class="col-4 pointer">
+            <div class="card border-primary mb-3" style="max-width: 18rem; margin: 20px;">
+                <center>
+                    <div class="card-header">Anotações</div>
+                </center>
+                <div class="card-body text-primary">
+                    <center>
+                        <i class="fas fa-book-open fa-10x"></i>
+                    </center>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -62,6 +74,10 @@
 
             $("#contactsDiv").on("click", function () {
                 document.location.href = "lista-de-contatos";
+            });
+
+            $("#notesDiv").on("click", function () {
+                document.location.href = "anotacoes";
             });
 
         });
