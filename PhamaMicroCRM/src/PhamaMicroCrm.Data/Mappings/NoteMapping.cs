@@ -16,11 +16,7 @@ namespace PhamaMicroCrm.Data.Mappings
 
             builder.Property(n => n.Text)
                    .IsRequired()
-                   .HasColumnType("varchar(500)");
-
-            // 1 : 1 => Note : Company
-            builder.HasOne(n => n.Company)
-                   .WithOne(c => c.Note);
+                   .HasColumnType("varchar(500)");            
 
             builder.ToTable("Notes");
         }

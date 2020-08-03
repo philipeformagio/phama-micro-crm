@@ -13,12 +13,15 @@ namespace PhamaMicroCrm.Web.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ICompanyRepository _companyRepository;
+        private readonly INoteService _noteService;
         public NotesController(ICompanyRepository companyRepository,
+                               INoteService noteService,
                                IMapper mapper,
                                INotifier notifier) : base(notifier)
         {
             _mapper = mapper;
             _companyRepository = companyRepository;
+            _noteService = noteService;
         }
 
         [Route("anotacoes")]
@@ -34,16 +37,21 @@ namespace PhamaMicroCrm.Web.Controllers
             return View(noteViewModel);
         }
 
-        //[Route("nova-anotacao")]
-        //[HttpPost]
-        //public async Task<IActionResult> Create(NoteViewModel noteViewModel)
-        //{
-        //    if (!ModelState.IsValid) return View(noteViewModel);
+        [Route("nova-anotacao")]
+        [HttpPost]
+        public async Task<IActionResult> Create(NoteViewModel noteViewModel)
+        {
+            noteViewModel.Companies = await this.GetAllCompaniesList();
+            if (!ModelState.IsValid) return View(noteViewModel);
 
-        //    var note = _mapper.Map<Note>(noteViewModel);
-        //    await _
+            var note = _mapper.Map<Note>(noteViewModel);
+            await _noteService.Add(note);
 
-        //}
+            if (!IsValidOperation()) return View(noteViewModel);
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
         #region .: Private Methods :.
         private async Task<NoteViewModel> GetNotesViewModel(NoteViewModel noteViewModel)
@@ -51,6 +59,11 @@ namespace PhamaMicroCrm.Web.Controllers
             noteViewModel.Companies = _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
 
             return noteViewModel;
+        }
+
+        private async Task<IEnumerable<CompanyViewModel>> GetAllCompaniesList()
+        {
+            return _mapper.Map<IEnumerable<CompanyViewModel>>(await _companyRepository.GetAll());
         }
         #endregion
     }

@@ -16,8 +16,7 @@ namespace PhamaMicroCrm.Web.Configurations
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<ICompanyUnitRepository, CompanyUnitRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
-            //services.AddScoped<IFornecedorRepository, FornecedorRepository>();
-            //services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+            services.AddScoped<INoteRepository, NoteRepository>();            
 
             //services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAttributeAdapterProvider>();
 
@@ -25,6 +24,7 @@ namespace PhamaMicroCrm.Web.Configurations
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<ICompanyUnitService, CompanyUnitService>();
             services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<INoteService, NoteService>();
 
             return services;
         }

@@ -14,9 +14,11 @@ namespace PhamaMicroCrm.Web.ViewModels
         public Guid CompanyId { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(50, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 4)]
         public string Title { get; set; }
         
         [Required(ErrorMessage = "O campo Anotação é obrigatório")]
+        [StringLength(500, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 5)]
         public string Text { get; set; }
         public DateTime CreatedAt { get; set; }
 

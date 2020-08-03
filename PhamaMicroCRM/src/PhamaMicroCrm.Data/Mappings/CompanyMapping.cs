@@ -26,6 +26,10 @@ namespace PhamaMicroCrm.Data.Mappings
                    .WithOne(cu => cu.Company)
                    .HasForeignKey(cu => cu.CompanyId);
 
+            builder.HasMany(c => c.Notes)
+                   .WithOne(n => n.Company)
+                   .HasForeignKey(n => n.CompanyId);
+
             builder.ToTable("Companies");
         }
     }
