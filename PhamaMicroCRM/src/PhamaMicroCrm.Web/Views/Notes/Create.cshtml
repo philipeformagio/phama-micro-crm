@@ -1,4 +1,11 @@
-﻿<br />
+﻿@model PhamaMicroCrm.Web.ViewModels.NoteViewModel
+@{
+    ViewData["Title"] = "Nova Anotação";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
 <div class="row">
     <div class="col-md-12">
         <form asp-action="Create">
@@ -6,32 +13,38 @@
 
             <div class="form-row">
                 <div class="col">
-                    <label for="Empresa">Empresa</label>
-                    <select class="form-control">
-                        <option>Default select</option>
+                    <label asp-for="CompanyId" class="control-label"></label>
+                    <select asp-for="CompanyId" class="form-control" asp-items="@(new SelectList(Model.Companies, "Id", "Name"))">
+                        <option></option>
                     </select>
-                </div>
-                <div class="col">
-                    <label for="Unidade">Unidade</label>
-                    <select class="form-control">
-                        <option>Default select</option>
-                    </select>
+                    <span asp-validation-for="CompanyId" class="text-danger"></span>
                 </div>
             </div>
             <br />
             <div class="form-row">
                 <div class="col">
                     <label for="Titulo">Título</label>
-                    <input type="text" class="form-control" />
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
             <br />
             <div class="form-row">
                 <div class="col">
                     <label for="Anotacao">Anotação</label>
-                    <textarea rows="6" class="form-control"></textarea>
+                    <textarea asp-for="Text" rows="6" class="form-control"></textarea>
+                    <span asp-validation-for="Text" class="text-danger"></span>
                 </div>
+            </div>
+            <br />
+            <div class="float-right">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -12,5 +12,6 @@ namespace PhamaMicroCrm.Model.Entities
         public DateTime CreatedAt { get; set; }
 
         public IEnumerable<CompanyUnit> CompanyUnits { get; set; }
+        public Note Note { get; set; }
     }
 }
