@@ -50,6 +50,7 @@ namespace PhamaMicroCrm.Web.Controllers
             if (!ModelState.IsValid) return View(noteViewModel);
 
             var note = _mapper.Map<Note>(noteViewModel);
+            note.CreatedAt = DateTime.Now;
             await _noteService.Add(note);
 
             if (!IsValidOperation()) return View(noteViewModel);
