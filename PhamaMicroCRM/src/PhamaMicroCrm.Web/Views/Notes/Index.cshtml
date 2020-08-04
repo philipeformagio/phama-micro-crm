@@ -1,1 +1,26 @@
-﻿NOTES LIST
+﻿@{
+    ViewData["Title"] = "Anotações";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<partial name="_menu" />
+
+<br />
+<hr />
+
+@Html.AntiForgeryToken()
+
+<table id="DT_load" class="table table-striped table-bordered" style="width: 100%;">
+    <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Título da Anotação</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts{
+    <script src="~/js/NoteIndex.js"></script>
+}

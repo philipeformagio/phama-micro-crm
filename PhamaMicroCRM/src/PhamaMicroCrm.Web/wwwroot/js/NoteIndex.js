@@ -9,22 +9,23 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#DT_load').DataTable({
         "ajax": {
-            "url": "/Companies/GetAll",
+            "url": "/Notes/GetAll",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "20%" },
-            { "data": "field", "width": "20%" },
+            { "data": "companyName", "width": "20%" },
+            { "data": "title", "width": "20%" },
             {
                 "data": "id",
-                "render": function (data) {                    
+                "render": function (data) {
+                    console.log(data);
                     return `<div class="text-center">
-                                <a href="/detalhes-empresa/${data}" class="btn btn-info text-white" style="cursor:pointer;">
+                                <a href="/detalhes-anotacao/${data}" class="btn btn-info text-white" style="cursor:pointer;">
                                     <spam class="fa fa-search"></spam>
                                 </a>
                                 &nbsp;
-                                <a href="/editar-empresa/${data}" class="btn btn-warning" style="cursor:pointer;">
+                                <a href="/editar-anotacao/${data}" class="btn btn-warning" style="cursor:pointer;">
                                     <spam class="fa fa-pencil-alt"></spam>
                                 </a>
                                 &nbsp;
