@@ -1,0 +1,50 @@
+﻿@model PhamaMicroCrm.Web.ViewModels.NoteViewModel
+@{
+    ViewData["Title"] = "Nova Anotação";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <vc:Summary></vc:Summary>
+
+            <div class="form-row">
+                <div class="col">
+                    <label asp-for="CompanyId" class="control-label"></label>
+                    <select asp-for="CompanyId" class="form-control" asp-items="@(new SelectList(Model.Companies, "Id", "Name"))">
+                        <option></option>
+                    </select>
+                    <span asp-validation-for="CompanyId" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="col">
+                    <label for="Titulo">Título</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="col">
+                    <label for="Anotacao">Anotação</label>
+                    <textarea asp-for="Text" rows="6" class="form-control"></textarea>
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="float-right">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

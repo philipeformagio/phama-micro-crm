@@ -63,10 +63,23 @@ namespace PhamaMicroCrm.Web.Controllers
         {
             if (id == null) return NotFound();
 
-            var companyViewModel = await this.GetNotesDetails(id.Value);
-            if (companyViewModel == null) return NotFound();
+            var noteViewModel = await this.GetNotesDetails(id.Value);
+            if (noteViewModel == null) return NotFound();
 
-            return View(companyViewModel);
+            return View(noteViewModel);
+        }
+
+        [Route("editar-anotacao/{id:guid}")]
+        public async Task<IActionResult> Edit(Guid? id)
+        {
+            if (id == null) return NotFound();
+
+            var noteViewModel = await this.GetNotesDetails(id.Value);
+            noteViewModel = await this.GetNotesViewModel(noteViewModel);
+
+            if (noteViewModel == null) return NotFound();
+
+            return View(noteViewModel);
         }
 
 
