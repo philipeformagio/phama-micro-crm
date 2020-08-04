@@ -19,6 +19,7 @@ namespace PhamaMicroCrm.Web.ViewModels
         
         [Required(ErrorMessage = "O campo Anotação é obrigatório")]
         [StringLength(500, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 5)]
+        [DisplayName("Anotação")]
         public string Text { get; set; }
 
         [DisplayName("Criado em:")]
