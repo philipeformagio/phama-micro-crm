@@ -28,9 +28,17 @@ namespace PhamaMicroCrm.Business.Services
             throw new NotImplementedException();
         }
 
-        public Task Update(Note note)
+        public async Task Update(Note note)
         {
-            throw new NotImplementedException();
+            if (!ExecuteValidation(new NoteValidation(), note)) return;
+
+            //if (_companyRepository.Get(c => c.Name == company.Name).Result.Any())
+            //{
+            //    Notify("Já existe uma empresa cadastrada com esse nome.");
+            //    return;
+            //}
+
+            await _noteRepository.Update(note);
         }
 
         public void Dispose()

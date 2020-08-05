@@ -82,6 +82,22 @@ namespace PhamaMicroCrm.Web.Controllers
             return View(noteViewModel);
         }
 
+        [HttpPost]
+        [Route("editar-anotacao/{id:guid}")]
+        public async Task<IActionResult> Edit(Guid id, NoteViewModel noteViewModel)
+        {
+            if (id != noteViewModel.Id) return NotFound();
+
+            if (!ModelState.IsValid) return View(noteViewModel);
+
+            var note = _mapper.Map<Note>(noteViewModel);
+            await _noteService.Update(note);
+
+            if (!IsValidOperation()) return View(noteViewModel);
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
         #region .: API Calls :.
         public async Task<IActionResult> GetAll()
