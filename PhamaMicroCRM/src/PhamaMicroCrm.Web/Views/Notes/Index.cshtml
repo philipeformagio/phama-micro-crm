@@ -4,9 +4,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<partial name="_menu" />
-
-<br />
+@*<partial name="_menu" />*@
 <hr />
 
 @Html.AntiForgeryToken()
@@ -16,6 +14,7 @@
         <tr>
             <th>Empresa</th>
             <th>Título da Anotação</th>
+            <th>Text</th>
             <th></th>
         </tr>
     </thead>

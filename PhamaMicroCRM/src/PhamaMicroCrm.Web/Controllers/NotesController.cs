@@ -102,15 +102,15 @@ namespace PhamaMicroCrm.Web.Controllers
         #region .: API Calls :.
         public async Task<IActionResult> GetAll()
         {
-            var porra =  await _noteRepository.GetNotesAllWithCompany();
-            var dataObj = porra.Select(x => new
+            var results =  await _noteRepository.GetNotesAllWithCompany();
+            var dataObj = results.Select(x => new
             {
                 Id = x.Id,
                 CompanyName = x.Company.Name,
                 Title = x.Title
             });
 
-            return Json(new { data = dataObj }); ;
+            return Json(new { data = dataObj });
         }
         #endregion
 
