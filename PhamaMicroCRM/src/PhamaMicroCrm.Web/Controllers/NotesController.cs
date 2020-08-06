@@ -107,7 +107,8 @@ namespace PhamaMicroCrm.Web.Controllers
             {
                 Id = x.Id,
                 CompanyName = x.Company.Name,
-                Title = x.Title
+                Title = x.Title,
+                Text = x.Text.Substring(0, 12) + "..."
             });
 
             return Json(new { data = dataObj });

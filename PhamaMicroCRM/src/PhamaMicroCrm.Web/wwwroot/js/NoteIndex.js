@@ -16,6 +16,7 @@ function loadDataTable() {
         "columns": [
             { "data": "companyName", "width": "20%" },
             { "data": "title", "width": "20%" },
+            { "data": "text", "width": "40%" },
             {
                 "data": "id",
                 "render": function (data) {
