@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhamaMicroCrm.Data.Context;
 using PhamaMicroCrm.Data.Interfaces;
+using PhamaMicroCrm.Data.ResultSets;
 using PhamaMicroCrm.Model.Entities;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace PhamaMicroCrm.Data.Repository
                            .Include(x => x.Company)
                            .Where(x => x.Id == id)
                            .FirstOrDefaultAsync();
+        }
+
+        public Task<QuantityNotesPerCompany> GetQuantityNotesPerCompany()
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PhamaMicroCrm.Model.Entities;
+﻿using PhamaMicroCrm.Data.ResultSets;
+using PhamaMicroCrm.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,5 +11,7 @@ namespace PhamaMicroCrm.Data.Interfaces
         Task<IEnumerable<Note>> GetNotesAllWithCompany();
 
         Task<Note> GetNoteWithCompanyById(Guid id);
+
+        Task<QuantityNotesPerCompany> GetQuantityNotesPerCompany();
     }
 }
