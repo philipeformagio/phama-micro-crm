@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using PhamaMicroCrm.Data.Context;
 using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Model.Entities;
@@ -14,9 +15,11 @@ namespace PhamaMicroCrm.Data.Repository
     {
         protected readonly PhamaMicroCrmContext Db;
         protected readonly DbSet<TEntity> DbSet;
+        protected readonly IConfiguration Configuration;
 
-        public Repository(PhamaMicroCrmContext db)
+        public Repository(PhamaMicroCrmContext db, IConfiguration configuration)
         {
+            this.Configuration = configuration;
             this.Db = db;
             this.DbSet = db.Set<TEntity>();
         }

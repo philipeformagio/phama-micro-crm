@@ -12,6 +12,6 @@ namespace PhamaMicroCrm.Data.Interfaces
 
         Task<Note> GetNoteWithCompanyById(Guid id);
 
-        Task<QuantityNotesPerCompany> GetQuantityNotesPerCompany();
+        Task<IEnumerable<QuantityNotesPerCompany>> GetQuantityNotesPerCompany();
     }
 }
