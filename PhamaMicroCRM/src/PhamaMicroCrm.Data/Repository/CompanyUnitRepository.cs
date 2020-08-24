@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using PhamaMicroCrm.Data.Context;
 using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Model.Entities;
@@ -10,7 +11,7 @@ namespace PhamaMicroCrm.Data.Repository
 {
     public class CompanyUnitRepository : Repository<CompanyUnit>, ICompanyUnitRepository
     {
-        public CompanyUnitRepository(PhamaMicroCrmContext context) : base(context) { }
+        public CompanyUnitRepository(PhamaMicroCrmContext context, IConfiguration configuration) : base(context, configuration) { }
 
         public async Task<IEnumerable<CompanyUnit>> GetAllCompanyUnitsWithCompanies()
         {
