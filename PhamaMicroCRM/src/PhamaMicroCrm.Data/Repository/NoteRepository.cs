@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PhamaMicroCrm.Data.Context;
@@ -7,7 +8,6 @@ using PhamaMicroCrm.Data.ResultSets;
 using PhamaMicroCrm.Model.Entities;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 

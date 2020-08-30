@@ -6,7 +6,10 @@ namespace PhamaMicroCrm.Data.Context
 {
     public class PhamaMicroCrmContext : DbContext
     {
-        public PhamaMicroCrmContext(DbContextOptions options) : base(options) { }
+        public PhamaMicroCrmContext(DbContextOptions options) : base(options) 
+        {
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyUnit> CompanyUnits { get; set; }
@@ -16,17 +19,14 @@ namespace PhamaMicroCrm.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
-            {
-                property.Relational().ColumnType = "varchar(100)";
-            }
+            foreach (var property in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetProperties()
+                    .Where(p => p.ClrType == typeof(string))))
+                property.SetColumnType("varchar(100)");
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(PhamaMicroCrmContext).Assembly);
 
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            {
-                relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
-            }
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
             base.OnModelCreating(modelBuilder);
         }
