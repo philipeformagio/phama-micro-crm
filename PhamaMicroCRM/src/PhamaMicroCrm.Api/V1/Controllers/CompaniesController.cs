@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PhamaMicroCrm.Api.Dtos;
 using PhamaMicroCrm.Data.Interfaces;
+using System.Collections.Generic;
 
 namespace PhamaMicroCrm.Api.V1.Controllers
 {
@@ -17,6 +19,9 @@ namespace PhamaMicroCrm.Api.V1.Controllers
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<>>
+        public async Task<IEnumerable<CompanyOutPutDto>> Get()
+        {
+
+        }
     }
 }
