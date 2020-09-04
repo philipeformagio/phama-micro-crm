@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using PhamaMicroCrm.Api.Extensions;
+using PhamaMicroCrm.Api.Interfaces;
 using PhamaMicroCrm.Business.Interfaces;
 using PhamaMicroCrm.Business.Notifications;
 using PhamaMicroCrm.Business.Services;
@@ -28,7 +30,7 @@ namespace PhamaMicroCrm.Api.Configuration
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUser, AspNetUser>();
 
-            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+            //services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
             return services;
         }
