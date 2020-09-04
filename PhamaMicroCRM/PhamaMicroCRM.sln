@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhamaMicroCrm.Web", "src\PhamaMicroCrm.Web\PhamaMicroCrm.Web.csproj", "{3DBF1663-1EAC-46D5-A32B-FB9931F7377A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhamaMicroCrm.Data", "src\PhamaMicroCrm.Data\PhamaMicroCrm.Data.csproj", "{C2CF5B37-225B-4DAC-90D4-41B331253BE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhamaMicroCrm.Data", "src\PhamaMicroCrm.Data\PhamaMicroCrm.Data.csproj", "{C2CF5B37-225B-4DAC-90D4-41B331253BE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhamaMicroCrm.Model", "src\PhamaMicroCrm.Model\PhamaMicroCrm.Model.csproj", "{0CD29CCC-1A80-4103-B0B5-C68EB6D9996F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhamaMicroCrm.Model", "src\PhamaMicroCrm.Model\PhamaMicroCrm.Model.csproj", "{0CD29CCC-1A80-4103-B0B5-C68EB6D9996F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhamaMicroCrm.Business", "src\PhamaMicroCrm.Business\PhamaMicroCrm.Business.csproj", "{8E2045F1-82D3-42DE-A125-837BAD5AA01B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhamaMicroCrm.Business", "src\PhamaMicroCrm.Business\PhamaMicroCrm.Business.csproj", "{8E2045F1-82D3-42DE-A125-837BAD5AA01B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhamaMicroCrm.Api", "src\PhamaMicroCrm.Api\PhamaMicroCrm.Api.csproj", "{CD674D65-FA91-4E1E-B6A2-374FDD607C63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8E2045F1-82D3-42DE-A125-837BAD5AA01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E2045F1-82D3-42DE-A125-837BAD5AA01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E2045F1-82D3-42DE-A125-837BAD5AA01B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD674D65-FA91-4E1E-B6A2-374FDD607C63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD674D65-FA91-4E1E-B6A2-374FDD607C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD674D65-FA91-4E1E-B6A2-374FDD607C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD674D65-FA91-4E1E-B6A2-374FDD607C63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
