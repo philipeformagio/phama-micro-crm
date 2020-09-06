@@ -21,6 +21,8 @@ namespace PhamaMicroCrm.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentityConfig(Configuration);
+
             services.AddDbContext<PhamaMicroCrmContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAutoMapper(typeof(Startup));
