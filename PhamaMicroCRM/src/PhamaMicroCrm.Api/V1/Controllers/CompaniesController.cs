@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PhamaMicroCrm.Api.Dtos;
 using PhamaMicroCrm.Data.Interfaces;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace PhamaMicroCrm.Api.V1.Controllers
 {
+    [Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class CompaniesController : ControllerBase
