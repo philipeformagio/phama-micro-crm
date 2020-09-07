@@ -5,7 +5,6 @@ using PhamaMicroCrm.Api.Dtos;
 using PhamaMicroCrm.Data.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.IO.Compression;
 using System.Threading.Tasks;
 
 namespace PhamaMicroCrm.Api.V1.Controllers
