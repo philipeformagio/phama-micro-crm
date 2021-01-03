@@ -1,0 +1,19 @@
+﻿@model IEnumerable<PhamaMicroCrm.Web.ViewModels.QuantityNotesPerCompanyViewModel>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Empresa</td>
+            <td>Anotações</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Counted</td>
+            </tr>
+        }
+    </tbody>
+</table>

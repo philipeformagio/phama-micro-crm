@@ -32,7 +32,7 @@ namespace PhamaMicroCrm.Web.Controllers
         [Route("anotacoes")]
         public async Task<IActionResult> Index()
         {
-             ViewBag.NotesPerCompany = _mapper.Map<IEnumerable<QuantityNotesPerCompanyViewModel>>(await _noteRepository.GetQuantityNotesPerCompany());
+             //ViewBag.NotesPerCompany = _mapper.Map<IEnumerable<QuantityNotesPerCompanyViewModel>>(await _noteRepository.GetQuantityNotesPerCompany());
 
             return View();
         }
