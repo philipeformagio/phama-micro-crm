@@ -13,33 +13,8 @@
 
             <input type="hidden" asp-for="Id" />
 
-            <div class="form-group">
-                <label asp-for="CompanyUnitId" class="control-label"></label>
-                <select asp-for="CompanyUnitId" class="form-control" asp-items="@(new SelectList(Model.CompanyUnits, "Id", "Name"))">
-                    <option></option>
-                </select>
-                <span asp-validation-for="CompanyUnitId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone_1" class="control-label"></label>
-                <input asp-for="Phone_1" class="form-control" />
-                <span asp-validation-for="Phone_1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone_2" class="control-label"></label>
-                <input asp-for="Phone_2" class="form-control" />
-                <span asp-validation-for="Phone_2" class="text-danger"></span>
-            </div>
+            <partial name="_ContactsFormData" />
+
             <div class="form-group">
                 <input type="submit" value="Atualizar" class="btn btn-primary" />
                 <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
