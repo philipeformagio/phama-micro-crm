@@ -14,32 +14,7 @@
 
             <input type="hidden" asp-for="Id" />
 
-            <div class="form-group">
-                <label asp-for="CompanyId" class="control-label"></label>
-                <select asp-for="CompanyId" class="form-control" asp-items="@(new SelectList(Model.Companies, "Id", "Name"))">
-                    <option></option>
-                </select>
-                <span asp-validation-for="CompanyId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone_1" class="control-label"></label>
-                <input asp-for="Phone_1" class="form-control" />
-                <span asp-validation-for="Phone_1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone_2" class="control-label"></label>
-                <input asp-for="Phone_2" class="form-control" />
-                <span asp-validation-for="Phone_2" class="text-danger"></span>
-            </div>
-
-            <h4>Endereço</h4>
-            <hr />
-            <partial name="_Address" />
+            <partial name="_CompanyUnitsFormData" />
 
             <div class="form-group">
                 <input type="submit" value="Cadastrar" class="btn btn-primary" />
