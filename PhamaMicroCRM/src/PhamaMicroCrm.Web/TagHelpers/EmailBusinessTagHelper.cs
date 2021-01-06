@@ -12,12 +12,18 @@ namespace PhamaMicroCrm.Web.TagHelpers
             //<email-business>philipe</email-business>
             //  => <a href="mailto:philipe.formagio@dev.io">philipe.formagio@gmail.com</a>
 
-            //<email-business email-domain=""gmail.com>support</email-business>
+            //<email-business email-domain="gmail.com">support</email-business>
             //  => <a href="mailto:support.formagio@gmail.com">philipe.formagio@gmail.com</a>
 
             output.TagName = "a";
             var content = await output.GetChildContentAsync();
-            var target = content.GetContent() + ".formagio@" + EmailDomain;
+
+            string target;
+            if (EmailDomain == "gmail.com")
+                target = content.GetContent() + ".formagio@" + EmailDomain;
+            else
+                target = content.GetContent() + "@" + EmailDomain;
+            
             output.Attributes.SetAttribute("href", "mailto:" + target);
             output.Content.SetContent(target);
         }
