@@ -21,7 +21,7 @@ namespace PhamaMicroCrm.Web
                 .AddJsonFile(path: $"appsettings.{hostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
 
-            //if (hostingEnvironment.IsDevelopment())
+            //if (hostingEnvironment.IsProduction())
             //{
             //    builder.AddUserSecrets<Startup>();
             //}
