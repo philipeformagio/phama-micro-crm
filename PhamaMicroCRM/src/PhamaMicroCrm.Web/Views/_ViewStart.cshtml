@@ -1,7 +1,12 @@
 ﻿@{
+    //how to change the layout depending on a user, for example
     var name = User.Identity.Name;
     if (name == "philipe.formagio@gmail.com")
+    {
         Layout = "_LayoutTest";
-
-    Layout = "_Layout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
 }
