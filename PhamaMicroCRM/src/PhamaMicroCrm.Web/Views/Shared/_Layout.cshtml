@@ -63,6 +63,11 @@
             &copy; 2020 - PhamaMicroCrm.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             - Developed by <email-business email-domain="gmail.com">philipe</email-business> && <email-business>support</email-business>
         </div>
+
+        <div class="container">
+            @inject Microsoft.Extensions.Configuration.IConfiguration _config
+            You are running this application in the @_config.GetSection("EnvironmentMessage").Value environment
+        </div>
     </footer>
 
     <environment include="Development">
