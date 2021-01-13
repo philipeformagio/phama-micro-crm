@@ -2,7 +2,7 @@
 using PhamaMicroCrm.Business.Interfaces;
 using System.Threading.Tasks;
 
-namespace PhamaMicroCrm.Web.Extensions
+namespace PhamaMicroCrm.Web.ViewComponents
 {
     public class SummaryViewComponent : ViewComponent
     {
