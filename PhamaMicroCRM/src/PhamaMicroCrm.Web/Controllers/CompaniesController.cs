@@ -6,7 +6,6 @@ using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Model.Entities;
 using PhamaMicroCrm.Web.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PhamaMicroCrm.Web.Controllers
