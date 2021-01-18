@@ -5,6 +5,7 @@ using PhamaMicroCrm.Business.Services;
 using PhamaMicroCrm.Data.Context;
 using PhamaMicroCrm.Data.Interfaces;
 using PhamaMicroCrm.Data.Repository;
+using PhamaMicroCrm.Web.Extensions;
 
 namespace PhamaMicroCrm.Web.Configurations
 {
@@ -16,7 +17,8 @@ namespace PhamaMicroCrm.Web.Configurations
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<ICompanyUnitRepository, CompanyUnitRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
-            services.AddScoped<INoteRepository, NoteRepository>();            
+            services.AddScoped<INoteRepository, NoteRepository>();
+            services.AddScoped<ILogRepository, LogRepository>();            
 
             //services.AddSingleton<IValidationAttributeAdapterProvider, MoedaValidationAttributeAdapterProvider>();
 
@@ -25,6 +27,8 @@ namespace PhamaMicroCrm.Web.Configurations
             services.AddScoped<ICompanyUnitService, CompanyUnitService>();
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<INoteService, NoteService>();
+
+            services.AddScoped<UrlAccessAuditFilter>();
 
             return services;
         }

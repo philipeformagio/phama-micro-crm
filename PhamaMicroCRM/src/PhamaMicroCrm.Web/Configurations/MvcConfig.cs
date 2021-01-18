@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using PhamaMicroCrm.Web.Extensions;
 
 namespace PhamaMicroCrm.Web.Configurations
 {
@@ -23,6 +24,8 @@ namespace PhamaMicroCrm.Web.Configurations
                 o.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "Este campo precisa ser preenchido.");
 
                 o.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); // with that can remove all [ValidateAntiForgeryToken]
+
+                o.Filters.Add(typeof(UrlAccessAuditFilter));
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             return services;

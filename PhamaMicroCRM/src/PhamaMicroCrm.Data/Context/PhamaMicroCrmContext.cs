@@ -16,6 +16,7 @@ namespace PhamaMicroCrm.Data.Context
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Log> Log { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

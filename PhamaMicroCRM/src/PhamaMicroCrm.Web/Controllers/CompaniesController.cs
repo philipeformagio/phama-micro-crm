@@ -44,7 +44,9 @@ namespace PhamaMicroCrm.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CompanyViewModel companyViewModel)
         {
-            companyViewModel.Phone = companyViewModel.Phone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
+            if (companyViewModel.Phone != "")
+                companyViewModel.Phone = companyViewModel.Phone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
+
             if (!ModelState.IsValid) return View(companyViewModel);
 
             var company = _mapper.Map<Company>(companyViewModel);

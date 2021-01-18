@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PhamaMicroCrm.Data.Context;
 
 namespace PhamaMicroCrm.Data.Migrations
 {
     [DbContext(typeof(PhamaMicroCrmContext))]
-    partial class PhamaMicroCrmContextModelSnapshot : ModelSnapshot
+    [Migration("20210113174951_LogRemoved")]
+    partial class LogRemoved
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,10 +150,6 @@ namespace PhamaMicroCrm.Data.Migrations
 
             modelBuilder.Entity("PhamaMicroCrm.Model.Entities.Log", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("varchar(500)");
@@ -159,8 +157,6 @@ namespace PhamaMicroCrm.Data.Migrations
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
-
-                    b.HasKey("Id");
 
                     b.ToTable("Log");
                 });
