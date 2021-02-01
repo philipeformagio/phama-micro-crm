@@ -95,6 +95,33 @@ namespace PhamaMicroCrm.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> _ModalCompany(Guid? id)
+        {
+            if (id.HasValue)
+            {
+                var companyViewModel = _mapper.Map<CompanyViewModel>(await _companyRepository.GetById(id.Value));
+                return PartialView("_ModalCompany", companyViewModel);
+            }
+            else
+            {
+                return PartialView("_ModalCompany", new CompanyViewModel());
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> _ModalCompany(CompanyViewModel companyViewModel)
+        {
+            if (companyViewModel.Phone != "")
+                companyViewModel.Phone = companyViewModel.Phone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
+
+            if (!ModelState.IsValid) return PartialView("_ModalCompany", companyViewModel);
+
+            var company = _mapper.Map<Company>(companyViewModel);
+            await _companyService.Add(company);
+
+            return Json(new { success = true });
+        }
+
 
         #region .: API Calls :.
 

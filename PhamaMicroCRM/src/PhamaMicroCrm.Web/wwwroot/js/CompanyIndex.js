@@ -3,6 +3,7 @@
 $(document).ready(function () {
 
     loadDataTable();
+    SetModal();
 
 });
 
@@ -18,7 +19,7 @@ function loadDataTable() {
             { "data": "field", "width": "20%" },
             {
                 "data": "id",
-                "render": function (data) {                    
+                "render": function (data) {
                     return `<div class="text-center">
                                 <a href="/detalhes-empresa/${data}" class="btn btn-info text-white" style="cursor:pointer;">
                                     <spam class="fa fa-search"></spam>

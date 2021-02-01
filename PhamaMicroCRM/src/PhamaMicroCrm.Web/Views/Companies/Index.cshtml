@@ -6,7 +6,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<partial name="_menu"/>
+<partial name="_menu" />
 
 <br />
 <hr />
@@ -23,7 +23,38 @@
     </thead>
 </table>
 
+<div class="modal fade in" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
 
 @section Scripts{
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/CompanyIndex.js"></script>
+    <script type="text/javascript">
+        jQuery("#Phone")
+            .mask("(99) 9999-9999?9")
+            .focusout(function (event) {
+                var target, phone, element;
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+                phone = target.value.replace(/\D/g, '');
+                element = $(target);
+                element.unmask();
+                if (phone.length > 10) {
+                    element.mask("(99) 99999-999?9");
+                } else {
+                    element.mask("(99) 9999-9999?9");
+                }
+            });
+
+        $('#createCompanyForm').submit(function () {
+            $("#Phone").val() = $("#Phone").val().replace(" ", "").replace("(", "").replace(")", "").replace("-", "");
+            return true; // return false to cancel form action
+        });
+    </script>
+
 }

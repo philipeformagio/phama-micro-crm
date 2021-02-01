@@ -28,6 +28,8 @@ namespace PhamaMicroCrm.Web.Configurations
                 o.Filters.Add(typeof(UrlAccessAuditFilter));
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
             return services;
         }
     }
