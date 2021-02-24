@@ -23,7 +23,7 @@ namespace PhamaMicroCrm.Business.Services
         {
             if (!ExecuteValidation(new CompanyValidation(), company)) return;
 
-            if(_companyRepository.Get(c => c.Name == company.Name).Result.Any())
+            if (_companyRepository.Get(c => c.Name == company.Name).Result.Any())
             {
                 Notify("Já existe uma empresa cadastrada com esse nome.");
                 return;
@@ -47,8 +47,14 @@ namespace PhamaMicroCrm.Business.Services
 
         public async Task Remove(Guid id)
         {
+            if ((await _companyRepository.GetCompanyWithUnits(id)).CompanyUnits.Any())
+            {
+                Notify("Não poderá excluir essa empresa, pois ela possuí unidade(s) atrelada(s) à ela.");
+                return;
+            }
+
             await _companyRepository.Remove(id);
-        }        
+        }
 
         public void Dispose()
         {

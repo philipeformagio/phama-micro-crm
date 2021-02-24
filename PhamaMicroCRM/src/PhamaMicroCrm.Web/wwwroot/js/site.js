@@ -22,6 +22,7 @@
 function bindForm(dialog) {
     //console.log("(bindForm) dialog", dialog);
     $('form', dialog).submit(function () {
+        $("#Phone").val().replace("(", "").replace(")", "").replace(" ", "").replace("-", "");
         $.ajax({
             url: this.action,
             type: this.method,

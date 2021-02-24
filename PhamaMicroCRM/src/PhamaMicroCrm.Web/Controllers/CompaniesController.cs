@@ -111,13 +111,15 @@ namespace PhamaMicroCrm.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> _ModalCompany(CompanyViewModel companyViewModel)
         {
-            if (companyViewModel.Phone != "")
+            if (companyViewModel.Phone != "" && companyViewModel.Phone != null)
                 companyViewModel.Phone = companyViewModel.Phone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
 
             if (!ModelState.IsValid) return PartialView("_ModalCompany", companyViewModel);
 
             var company = _mapper.Map<Company>(companyViewModel);
             await _companyService.Add(company);
+
+            if (!IsValidOperation()) return PartialView("_ModalCompany", companyViewModel);
 
             return Json(new { success = true });
         }
